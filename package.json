@@ -1,0 +1,27 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "employee tracker",
+  "main": "server.js",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cMfarris/tracking-employee"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://https://github.com/cMfarris/tracking-employee/issues"
+  },
+  "homepage": "https://https://github.com/cMfarris/tracking-employee#readme"
+}
+
+ 

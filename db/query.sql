@@ -1,0 +1,4 @@
+-- SELECT
+--   -- Select the columns from both tables --
+--   department.name AS name.name AS name
+-- FROM department

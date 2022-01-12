@@ -1,27 +1,26 @@
 {
-  "name": "employee-tracker",
+  "name": "tracking-employee",
   "version": "1.0.0",
-  "description": "employee tracker",
-  "main": "server.js",
-  "dependencies": {
-    "inquirer": "^8.2.0",
-    "mysql2": "^2.3.3"
-  },
-  "devDependencies": {},
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cMfarris/tracking-employee"
+    "url": "git+https://github.com/cMfarris/tracking-employee.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://https://github.com/cMfarris/tracking-employee/issues"
+    "url": "https://github.com/cMfarris/tracking-employee/issues"
   },
-  "homepage": "https://https://github.com/cMfarris/tracking-employee#readme"
+  "homepage": "https://github.com/cMfarris/tracking-employee#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquire": "^0.4.8",
+    "mysql2": "^2.3.3"
+  }
 }
-
- 

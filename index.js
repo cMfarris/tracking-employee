@@ -35,46 +35,37 @@ function intialprompt() {
                     
                     break;
             
-                default:
-                    break;
+                
                 case "view role":
 
                     break;
 
-                    default:
-                        break;
+                    
 
                 case "view title":
 
                     break;
 
-                    default:
-                        break;
-                case "view title by role":
+                    
+                
 
-                     break;
-
-                     default:
-                         break;
+                     
                 case "view salary by role":
                      
                         break;
 
-                      default:
-                         break;
+                     
 
                 case "view employee":
                      
                             break;
     
-                          default:
-                             break;
+                         
                 case "view first name by employee":
                      
                                 break;
         
-                              default:
-                                 break;
+                              
                 case "view last name by employee":
                      
                         break;
@@ -86,12 +77,51 @@ function intialprompt() {
             }
             // Use user feedback for... whatever!!
         })
-        .catch((error) => {
-            if (error.isTtyError) {
-                // Prompt couldn't be rendered in the current environment
-            } else {
-                // Something else went wrong
+        .then((res) => {
+            var answer = res.choice;
+            console.log(answer);
+            if (answer === "view employee") {
+              connection.query("SELECT * FROM employee", function (err, res) {
+                if (err) console.log(err);
+                console.table(res);
+              }); 
+            }
+            if (answer === "view first name  by employee ") {
+                connection.query("SELECT * FROM employee", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
+              }
+              if (answer === "view last name by employee ") {
+                connection.query("SELECT * FROM employee", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
+              } 
+              if (answer === "view department") {
+                connection.query("SELECT * FROM department", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
+              }
+              if (answer === "view role") {
+                connection.query("SELECT * FROM role", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
+              } 
+              if (answer === "view title") {
+                connection.query("SELECT * FROM role", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
+            }
+            if (answer === "view salary") {
+                connection.query("SELECT * FROM role", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                }); 
             }
         });
-}
-intialprompt()
+            
+intialprompt() }

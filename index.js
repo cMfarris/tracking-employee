@@ -23,53 +23,79 @@ function intialprompt() {
             {
                 type: 'list',
                 name: 'option',
-                choices: ['view department', 'view role', 'view title', 'view title by role', 'view salary by role', 'view employee', 'view first name by employee', 'view last name by employee'],
+                choices: ['View employee', 'View department', 'Add employee','Update employee role', 'View role', 'Add role', 'Add department' ],
                 message: 'what would you like to do?'
+              
             }
             /* Pass your questions in here */
         ])
         .then((answers) => {
             console.log(answers)
             switch (answers.option) {
-                case "view department":
+                case "View employee":
+                    viewemployee();
+
                     
                     break;
             
-                
-                case "view role":
+                case "View department":
+                    viewdepartment();
 
                     break;
-
-                    
-
-                case "view title":
-
-                    break;
-
-                    
                 
+                case "Add employee":
+                
+                    break;
 
                      
-                case "view salary by role":
+                
+                       
+                        /* Pass your questions in here */
+
                      
                         break;
 
                      
-
-                case "view employee":
+                case "Update employee role":
+                    //updateemployeerole();
                      
                             break;
     
                          
-                case "view first name by employee":
+                case "View role":
+                    viewrole();
                      
                                 break;
         
                               
-                case "view last name by employee":
+                case "Add role":
+                    //addrole();
                      
                         break;
 
+                case "Remove role":
+                    //removerole();
+                     
+                            break;
+
+                case "Add department":
+                   cm.prompt([
+                        {
+                           
+                            name: 'name',
+                            message: 'what is the department name?'
+                          
+                        }
+                        /* Pass your questions in here */
+                    ]) .then(res =>{
+                        let name = res
+                        addepartment(name)
+                    })
+                    
+                     
+                                    break;
+                
+    
                       default:
                          break;
 
@@ -77,51 +103,42 @@ function intialprompt() {
             }
             // Use user feedback for... whatever!!
         })
-        .then((res) => {
-            var answer = res.choice;
-            console.log(answer);
-            if (answer === "view employee") {
-              connection.query("SELECT * FROM employee", function (err, res) {
+    }
+        
+              
+              function viewemployee () {
+                db.query("SELECT * FROM employee", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                  intialprompt() 
+                }); 
+              } 
+              function viewdepartment () {
+                db.query("SELECT * FROM department", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                  intialprompt() 
+                }); 
+              }
+              function viewrole () {
+                db.query("SELECT * FROM role", function (err, res) {
+                  if (err) console.log(err);
+                  console.table(res);
+                  intialprompt() 
+                }); 
+              } 
+            function addepartment(department) {
+                db.query('INSERT INTO department SET ?', department, function (err) {
+                    if (err) console.log(err);
+                  console.log('department added');
+                  intialprompt()  
+                })
+            }
+            function addemployee(employee) {
+            db.query('INSERT INTO employee SET ?', employee, function (err) {
                 if (err) console.log(err);
-                console.table(res);
-              }); 
-            }
-            if (answer === "view first name  by employee ") {
-                connection.query("SELECT * FROM employee", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-              }
-              if (answer === "view last name by employee ") {
-                connection.query("SELECT * FROM employee", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-              } 
-              if (answer === "view department") {
-                connection.query("SELECT * FROM department", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-              }
-              if (answer === "view role") {
-                connection.query("SELECT * FROM role", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-              } 
-              if (answer === "view title") {
-                connection.query("SELECT * FROM role", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-            }
-            if (answer === "view salary") {
-                connection.query("SELECT * FROM role", function (err, res) {
-                  if (err) console.log(err);
-                  console.table(res);
-                }); 
-            }
-        });
-            
-intialprompt() }
+              console.log('employee added');
+              intialprompt()  
+            })
+        }
+intialprompt() 
